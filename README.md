@@ -1,12 +1,24 @@
 # Dottie Forever
 
-An Apple Silicon macOS project for routing a microphone, ChatGPT voice and optional Discord voice, with a wake/standby gate on the feed to the assistant.
+![Dottie Forever](docs/dottie-wordmark.svg)
 
-This is a **source review snapshot**, not an installer or release. It includes the current routing interface, native controller sources and core mixer source. The interface can run as a browser preview with simulated audio. The snapshot does not contain the privileged loader, HAL package, capture host, speech weights/fixtures, development machine configuration, or installation automation. It cannot install a driver or start routing by itself. ChatGPT calls are started separately in ChatGPT.
+**Talk to your Dot without taking over guild voice.**
 
-## Interface preview
+Dottie Forever is a Mac voice-routing project built for playing World of Warcraft: Forever with friends. The assistant feed has its own wake and standby control, so you can ask a ChatGPT Dot a question and then go back to talking to your party. Discord is optional. Game audio stays on your normal output.
 
-With Node 24, from this directory:
+**This repository is a source preview, not an installer.** You can try the routing canvas with simulated audio. This checkout cannot start live routing, listen to your mic, or open a Dot call for you.
+
+<!-- Demo: add the verified, approved video link here when it is ready to share. -->
+
+## Try it with your Dot
+
+If your Dot can run commands in a connected Work environment, open a fresh checkout of this repository and give it this prompt:
+
+> In this fresh checkout of `teereximus1337/dottie-forever`, read the README and check that Node 24 is available. Run the documented frontend dependency install and tests, then start the preview server on loopback and give me the printed URL with `?preview=1` appended. Show me how the mic, ChatGPT and optional Discord connect on the simulated canvas. Do not install an app or audio driver, modify live audio settings, open a call, or fetch another copy of the project. If the environment can’t run the preview, tell me exactly what is missing. If I ask for a WoW lookup, use the public Polestar guide linked in the README and cite the specific step.
+
+### Try it manually
+
+From a fresh checkout with Node 24:
 
 ```sh
 npm --prefix frontend ci
@@ -14,12 +26,16 @@ npm --prefix frontend test
 npm --prefix frontend run dev
 ```
 
-Open the local URL printed by Vite with `?preview=1`. The preview neither records nor routes audio.
+Open the local URL printed by Vite with `?preview=1` appended. The preview uses fixtures; it requests no mic access and does not connect to ChatGPT or Discord.
 
-## WoW knowledge is separate
+## Use Polestar for WoW Forever
 
-The Polestar card identifies a separate reference for WoW Forever and does not claim that a reference is active or connected. Thanks to [fitzforge and the Polestar contributors](https://github.com/fitzforge/polestar). See [Polestar reference setup](docs/POLESTAR.md) for public upstream options. No game data or hosted service connection is bundled.
+Dottie handles audio, not quest answers. Use [Polestar’s public guides](https://polestar.guide/guides) in the Dot conversation you use for voice. For example, give your Dot the [Alliance Riverglades guide](https://polestar.guide/guides/alliance/40-50/01b-riverglades) and ask, “Who starts The Lost Scout, and who do I turn it in to? Cite the guide step.”
 
-## Distribution status
+For a separate offline lookup, see [Polestar reference setup](docs/POLESTAR.md). The guide explains how to download and verify a pinned upstream database yourself. Nothing here changes your Dot’s tools, bundles game data, or configures a private service. The Polestar card on the canvas is a reference credit, not a live connection indicator.
 
-No license grant or public distribution commitment is made in this snapshot. Use generic symbols while reviewing the rights to the intended branding, speech dependencies and native components. Neither this snapshot nor its preview is a claim that live routing or a production installer has been verified.
+Thanks to [Samir from Dots](https://x.com/_samirism) and [Fitz from Polestar](https://x.com/0xFitz). The [Polestar project and its contributors](https://github.com/fitzforge/polestar) publish the guides and data.
+
+## What’s in this checkout
+
+The repository includes the routing interface, native controller sources, and core mixer source. Live routing additionally needs the native capture host, compatible Core Audio driver and helper, deployment scripts, and locally configured speech recognition for wake words. Those pieces are not distributed here. There is no downloadable app or public license grant in this snapshot.

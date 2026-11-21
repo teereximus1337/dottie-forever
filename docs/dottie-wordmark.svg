@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="226" viewBox="0 0 960 226" role="img" aria-labelledby="title">
+  <title id="title">Dottie Forever</title>
+  <rect width="960" height="226" rx="28" fill="#141a24"/>
+  <path d="M64 176H896" stroke="#354657" stroke-width="2"/>
+  <path d="M64 176h116" stroke="#aee3d2" stroke-width="4"/>
+  <text x="62" y="130" fill="#f1effd" font-family="system-ui, sans-serif" font-weight="800" font-size="80" letter-spacing="-3">Dottie</text>
+  <text x="328" y="130" fill="#aee3d2" font-family="system-ui, sans-serif" font-weight="450" font-size="80" letter-spacing="-3">Forever</text>
+</svg>
