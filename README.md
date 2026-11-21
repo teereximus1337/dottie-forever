@@ -8,7 +8,13 @@ Dottie Forever is a Mac voice-routing project built for playing World of Warcraf
 
 **This repository is a source preview, not an installer.** You can try the routing canvas with simulated audio. This checkout cannot start live routing, listen to your mic, or open a Dot call for you.
 
-<!-- Demo: add the verified, approved video link here when it is ready to share. -->
+## Watch the demo
+
+![Dottie Forever demo, coming soon on X](docs/dottie-demo-placeholder.svg)
+
+The X video link will go here when it’s posted.
+
+<!-- Replace the image line with [![Watch the Dottie Forever demo](docs/dottie-demo-thumbnail.svg)](FINAL_X_POST_URL) after adding the approved final thumbnail and confirming the exact post URL. Then remove the coming-soon sentence. -->
 
 ## Try it with your Dot
 

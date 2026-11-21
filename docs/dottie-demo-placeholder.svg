@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="424" viewBox="0 0 960 424" role="img" aria-labelledby="title desc">
+  <title id="title">Dottie Forever demo, coming soon</title>
+  <desc id="desc">An original text card. No video link is available yet.</desc>
+  <rect width="960" height="424" rx="28" fill="#141a24"/>
+  <rect x="24" y="24" width="912" height="376" rx="17" fill="none" stroke="#354657" stroke-width="2"/>
+  <path d="M78 278H882" stroke="#354657" stroke-width="2"/>
+  <path d="M78 278h104" stroke="#aee3d2" stroke-width="4"/>
+  <g font-family="system-ui, sans-serif">
+    <text x="78" y="111" fill="#aee3d2" font-size="21" font-weight="650" letter-spacing="4">DOTTIE FOREVER</text>
+    <text x="74" y="214" fill="#f1effd" font-size="80" font-weight="750" letter-spacing="-3">Watch the demo</text>
+    <text x="78" y="342" fill="#bac8d9" font-size="26">Video coming soon on X.</text>
+  </g>
+</svg>
