@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><dict>
+<key>CFBundleIdentifier</key><string>private.audio.router.app</string>
+<key>CFBundleName</key><string>Dottie Forever</string>
+<key>CFBundleDisplayName</key><string>Dottie Forever</string>
+<key>CFBundleIconFile</key><string>DottieForever.icns</string>
+<key>CFBundleExecutable</key><string>AudioRouter</string>
+<key>CFBundlePackageType</key><string>APPL</string>
+<key>CFBundleVersion</key><string>10</string>
+<key>CFBundleShortVersionString</key><string>0.3.1</string>
+<key>LSMinimumSystemVersion</key><string>14.4</string>
+<key>NSHighResolutionCapable</key><true/>
+<key>NSMicrophoneUsageDescription</key><string>Mix your selected physical microphone into the app and assistant inputs. Audio stays on this Mac and is not recorded.</string>
+<key>NSAudioCaptureUsageDescription</key><string>Capture only the apps you connect on the audio canvas. Normal headphone playback stays unchanged.</string>
+</dict></plist>

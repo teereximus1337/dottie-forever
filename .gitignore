@@ -1,0 +1,12 @@
+.DS_Store
+__pycache__/
+*.pyc
+frontend/node_modules/
+frontend/dist/
+*.app/
+*.driver/
+*.dylib
+*.wav
+*.aiff
+*.zip
+*.onnx
