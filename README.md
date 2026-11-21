@@ -104,4 +104,8 @@ To use the pinned quest database, set it up on your Dot’s VM and check the res
 
 Thanks to [Samir from Dots](https://x.com/_samirism), [Fitz from Polestar](https://x.com/0xFitz), and the [Polestar contributors](https://github.com/fitzforge/polestar). Dottie Forever is an independent community project.
 
+## Source availability
+
+You may download, build, and run Dottie Forever for your personal use. All other rights in the project's original materials are reserved, subject to the [GitHub Terms of Service](https://docs.github.com/en/site-policy/github-terms/github-terms-of-service#5-license-grant-to-other-users). Third-party components retain their own licenses and notices.
+
 <!-- The wordmark and demo placeholder are original Dottie Forever text and geometry. The GitHub social preview at docs/dottie-share-card.png uses the same palette and wordmark treatment with rasterized Avenir Next lettering. It contains no third-party marks or artwork. -->
