@@ -249,16 +249,26 @@ final class NativeRuntime {
         }
         telemetryTimer = timer; timer.resume()
     }
+    var manualVoiceGate: Bool {
+        guard let resources = resourcesOverride ?? Bundle.main.resourceURL else { return false }
+        return FileManager.default.fileExists(atPath: resources.appendingPathComponent("ManualVoiceGate").path)
+    }
+    func graphForBuild(_ graph: [String: Any]) -> [String: Any] {
+        guard manualVoiceGate else { return graph }
+        var graph = graph
+        graph["voice_detection"] = false
+        return graph
+    }
     func graph(from selections: [String: Any]) -> [String: Any] {
-        selections["graph"] as? [String: Any] ?? GraphConfiguration.legacy(selections)
+        graphForBuild(selections["graph"] as? [String: Any] ?? GraphConfiguration.legacy(selections))
     }
     func saveGraph(_ proposed: [String: Any]) throws -> [String: Any] {
-        let validated = try GraphConfiguration.validate(proposed, complete: false)
+        let validated = try GraphConfiguration.validate(graphForBuild(proposed), complete: false)
         var current = settings(); current["graph"] = validated; try save(current)
         return ["ok": true, "graph": validated, "settings": current]
     }
     func applyGraph(_ proposed: [String: Any]) throws -> [String: Any] {
-        let validated = try ProductProfile.validate(proposed)
+        let validated = try ProductProfile.validate(graphForBuild(proposed))
         // Resolve before disturbing the last working route.
         _ = try GraphConfiguration.resolve(validated, catalog: freshCatalog(), revision: "validate")
         let previous = activeGraph
@@ -612,7 +622,7 @@ final class NativeRuntime {
         guard let data = try? Data(contentsOf: configURL), data.count <= 65536,
               let value = try? JSONSerialization.jsonObject(with: data) as? [String: Any] else {
             return ["names": ["discord": "Router · Apps", "alexa": "Router · Assistant"],
-                    "phrases": ["wake": "Hey Alexa", "standby": "Alexa standby"],
+                    "phrases": ["wake": "Hey Dot", "standby": "Dot standby"],
                     "mic_uid": "", "discord_bundle": "", "dot_bundle": "", "voice_detection": true]
         }
         var migrated = value

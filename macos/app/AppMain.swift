@@ -191,7 +191,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, WKNa
               let command = message.body as? [String: Any], let operation = command["op"] as? String else {
             replyHandler(nil, "Only the bundled interface can control this app."); return
         }
-        let allowed: Set<String> = ["bootstrap", "catalog", "start", "status", "heartbeat", "wake", "standby", "shutdown", "configure", "install", "save_graph", "apply_graph", "diagnostics", "open_event_logs"]
+        let allowed: Set<String> = ["bootstrap", "catalog", "start", "status", "heartbeat", "wake", "standby", "shutdown", "configure", "save_graph", "apply_graph", "diagnostics", "open_event_logs"]
         guard allowed.contains(operation) else { replyHandler(nil, "Unknown controller operation."); return }
         let readOnly = ["status", "bootstrap", "catalog", "diagnostics"].contains(operation)
         let ticket = readOnly ? nil : interfaceCommands.ticket()
@@ -218,7 +218,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, WKNa
             DispatchQueue.global(qos: .userInitiated).async {
                 var result = AudioCatalog.snapshot(includeInstalled: true, refreshInstalled: operation == "catalog")
                 var saved = self.runtime.settings()
-                saved["graph"] = ProductProfile.sanitizedGraph(from: saved)
+                saved["graph"] = self.runtime.graphForBuild(ProductProfile.sanitizedGraph(from: saved))
                 result["settings"] = saved
                 result["apps"] = (result["apps"] as? [[String: Any]] ?? []).filter {
                     [ProductProfile.chatGPTBundleID, ProductProfile.discordBundleID].contains($0["bundle_id"] as? String ?? "")
@@ -226,15 +226,11 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, WKNa
                 result["ok"] = true
                 let resources = Bundle.main.resourceURL!
                 result["components"] = ["host": FileManager.default.isExecutableFile(atPath: resources.appendingPathComponent("bin/audio_router_host").path),
-                    "installer": FileManager.default.fileExists(atPath: resources.appendingPathComponent("AudioRouter.driver").path)
-                        && FileManager.default.isExecutableFile(atPath: resources.appendingPathComponent("bin/audio_router_broker").path)]
+                    "voice_detector": !self.runtime.manualVoiceGate]
                 let response = result
                 DispatchQueue.main.async { replyHandler(response, nil) }
             }
             return
-        }
-        if operation == "install" {
-            installDriver(replyHandler); return
         }
         runtime.queue.async {
             guard let ticket, self.interfaceCommands.accepts(ticket) else {
@@ -293,31 +289,6 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, WKNa
     }
     func applyEndpointNames(_ names: [String: String]) -> [String: OSStatus] {
         endpointNames.apply(names)
-    }
-    func installDriver(_ reply: @escaping (Any?, String?) -> Void) {
-        let alert = NSAlert()
-        alert.messageText = "Install the two virtual inputs?"
-        alert.informativeText = "This installs two virtual inputs and a small local audio service, then restarts Core Audio. Current calls and other audio may be interrupted. Your selected audio routes will not be changed. macOS will ask for administrator authorization."
-        alert.addButton(withTitle: "Install and restart audio")
-        alert.addButton(withTitle: "Cancel")
-        alert.beginSheetModal(for: window) { response in
-            guard response == .alertFirstButtonReturn else { reply(["ok": false, "error": ["code": "cancelled", "message": "Installation cancelled."]], nil); return }
-            guard let script = Bundle.main.url(forResource: "install-driver", withExtension: "sh", subdirectory: "bin") else {
-                reply(nil, "The driver installer is missing from this build."); return
-            }
-            let quotedPath = "'" + script.path.replacingOccurrences(of: "'", with: "'\\''") + "'"
-            let shell = "/bin/sh " + quotedPath + " --install"
-            let escaped = shell.replacingOccurrences(of: "\\", with: "\\\\").replacingOccurrences(of: "\"", with: "\\\"")
-            DispatchQueue.global(qos: .userInitiated).async {
-                var error: NSDictionary?
-                let result = NSAppleScript(source: "do shell script \"\(escaped)\" with administrator privileges")?.executeAndReturnError(&error)
-                let failure = error?[NSAppleScript.errorMessage] as? String
-                DispatchQueue.main.async {
-                    if let failure { reply(["ok": false, "error": ["code": "install_failed", "message": failure]], nil) }
-                    else { reply(["ok": true, "message": result?.stringValue ?? "Driver installed."], nil) }
-                }
-            }
-        }
     }
 }
 

@@ -11,6 +11,6 @@
 <key>CFBundleShortVersionString</key><string>0.3.1</string>
 <key>LSMinimumSystemVersion</key><string>14.4</string>
 <key>NSHighResolutionCapable</key><true/>
-<key>NSMicrophoneUsageDescription</key><string>Mix your selected physical microphone into the app and assistant inputs. Audio stays on this Mac and is not recorded.</string>
-<key>NSAudioCaptureUsageDescription</key><string>Capture only the apps you connect on the audio canvas. Normal headphone playback stays unchanged.</string>
+<key>NSMicrophoneUsageDescription</key><string>Route your selected microphone to your ChatGPT Dot and optionally to Discord.</string>
+<key>NSAudioCaptureUsageDescription</key><string>Use audio from the ChatGPT and Discord desktop apps you connect on the canvas.</string>
 </dict></plist>

@@ -69,7 +69,7 @@ export type Catalog = {
   };
   apps: AppInfo[];
   settings: Settings;
-  components?: { host: boolean; installer: boolean };
+  components?: { host: boolean; voice_detector: boolean };
   endpoints?: Device[];
   reference?: ReferenceInfo;
 };

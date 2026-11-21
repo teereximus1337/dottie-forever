@@ -114,8 +114,8 @@ function App() {
       alexa: "Router · Assistant",
     }),
     [phrases, setPhrases] = useState({
-      wake: "Hey Alexa",
-      standby: "Alexa standby",
+      wake: "Hey Dot",
+      standby: "Dot standby",
     });
   const [focusedRoute, setFocusedRoute] = useState<string | null>(null);
   const [eventDiagnostics, setEventDiagnostics] = useState<EventDiagnostics | null>(null);
@@ -425,6 +425,7 @@ function App() {
           : "Unavailable";
   };
   const active = snapshot?.gate === "open";
+  const manualVoiceGate = catalog?.components?.voice_detector === false;
   const configuredNames = snapshot?.names ||
     catalog?.settings.names || {
       discord: "Router · Apps",
@@ -442,8 +443,8 @@ function App() {
   };
   const activePhrases =
     snapshot?.phrases || catalog?.settings.phrases || {
-      wake: "Hey Alexa",
-      standby: "Alexa standby",
+      wake: "Hey Dot",
+      standby: "Dot standby",
     };
   useEffect(() => {
     if (!phraseToast) return;
@@ -1117,11 +1118,12 @@ function App() {
                   </div>
                   <div className="settings-section">
                     <h3>Voice phrases</h3>
+                    {manualVoiceGate && <p>Use the Wake and Standby buttons in this manual-gate build.</p>}
                     <label>
                       Wake phrase
                       <input
                         value={phrases.wake}
-                        disabled={!!busy}
+                        disabled={!!busy || manualVoiceGate}
                         onChange={(e) =>
                           setPhrases({ ...phrases, wake: e.target.value })
                         }
@@ -1132,7 +1134,7 @@ function App() {
                       Standby phrase
                       <input
                         value={phrases.standby}
-                        disabled={!!busy}
+                        disabled={!!busy || manualVoiceGate}
                         onChange={(e) =>
                           setPhrases({ ...phrases, standby: e.target.value })
                         }
@@ -1172,7 +1174,7 @@ function App() {
                               saved_test_mode: "Phrases saved. Test mode is active.",
                               saved_listener_not_ready: "Phrases saved. Listener readiness isn’t confirmed.",
                             };
-                            setPhraseToast(response.phrase_activation ? messages[response.phrase_activation] : "Phrases saved. Listener readiness isn’t confirmed.");
+                            setPhraseToast(manualVoiceGate ? "Input names saved." : response.phrase_activation ? messages[response.phrase_activation] : "Phrases saved. Listener readiness isn’t confirmed.");
                             if (response.device_name_warning) setNotice(response.device_name_warning);
                           } catch (error) {
                             setPhraseError((error as Error).message);
@@ -1180,7 +1182,7 @@ function App() {
                         })
                       }
                     >
-                      {busy === "Saving settings" ? "Saving…" : "Save names & phrases"}
+                      {busy === "Saving settings" ? "Saving…" : manualVoiceGate ? "Save input names" : "Save names & phrases"}
                     </button>
                     {phraseError && <p className="helper phrase-error" role="alert">{phraseError}</p>}
                   </div>
@@ -1266,25 +1268,7 @@ function App() {
                       </button>
                       <p className="helper">Older events rotate automatically; at most 8 MiB is kept.</p>
                     </div>
-                    <button
-                      className="secondary-button wide"
-                      disabled={
-                        live || !!busy || !catalog?.components?.installer
-                      }
-                      onClick={() =>
-                        void operate("Installing", async () => {
-                          const r = await bridge({ op: "install" });
-                          setNotice(r.message || "Virtual inputs installed.");
-                          void refresh().catch((e) => setError(e.message));
-                        })
-                      }
-                    >
-                      Install virtual inputs…
-                    </button>
-                    <p className="helper">
-                      Installation interrupts system audio and asks for
-                      administrator authorization.
-                    </p>
+                    {hasNative && <p className="helper">To install or remove the virtual inputs, follow the setup instructions in this checkout’s README.</p>}
                   </details>
                 </>
               ) : focusedRoute ? (
@@ -1453,21 +1437,19 @@ function App() {
                       }
                     />
                   )}
-                  <RouteToggle
-                    label="Use voice phrases"
-                    checked={graph.voice_detection}
-                    onChange={(v) =>
-                      saveDraft({ ...graph, voice_detection: v })
-                    }
-                  />
-                  <div className="phrase-preview">
-                    <span>
-                      Wake <b>{activePhrases.wake}</b>
-                    </span>
-                    <span>
-                      Standby <b>{activePhrases.standby}</b>
-                    </span>
-                  </div>
+                  {!manualVoiceGate && (
+                    <>
+                      <RouteToggle
+                        label="Use voice phrases"
+                        checked={graph.voice_detection}
+                        onChange={(v) => saveDraft({ ...graph, voice_detection: v })}
+                      />
+                      <div className="phrase-preview">
+                        <span>Wake <b>{activePhrases.wake}</b></span>
+                        <span>Standby <b>{activePhrases.standby}</b></span>
+                      </div>
+                    </>
+                  )}
                 </>
               ) : selected === "reference" ? (
                 <>

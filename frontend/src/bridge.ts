@@ -29,9 +29,9 @@ const fixtureCatalog: Catalog = {
     dot_bundle: CHATGPT_BUNDLE,
     discord_bundle: DISCORD_BUNDLE,
     names: { discord: "Router · Apps", alexa: "Router · Assistant" },
-    phrases: { wake: "Hey Alexa", standby: "Alexa standby" },
+    phrases: { wake: "Hey Dot", standby: "Dot standby" },
   },
-  components: { host: true, installer: false },
+  components: { host: true, voice_detector: true },
   reference: {
     name: "Polestar",
     edition: "WoW Forever",

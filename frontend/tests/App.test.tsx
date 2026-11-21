@@ -56,7 +56,7 @@ const makeCatalog = (): Catalog => ({
     names: {discord: 'Router · Apps', alexa: 'Router · Assistant'},
     phrases: {wake: 'Hello assistant', standby: 'Assistant standby'},
   },
-  components: {host: true, installer: false},
+  components: {host: true, voice_detector: true},
   reference: {
     name: 'Polestar', status: 'verified_snapshot', edition: 'WoW Forever', version: 'fixture-1', record_count: 12345,
     built_at: '2026-11-09', verified_at: '2026-11-18', site_url: 'https://example.invalid/reference',
@@ -121,6 +121,20 @@ async function startApp() {
 beforeEach(() => {delete window.webkit; flowCapture.current = null;});
 
 describe('native canvas controls', () => {
+  it('uses the manual gate without offering a voice detector in a manual build', async () => {
+    const controller = installController();
+    controller.catalog.components = {host: true, voice_detector: false};
+    controller.catalog.settings.graph = {...migrate(controller.catalog.settings), voice_detection: false};
+    await loadApp();
+    expect(screen.getByText('Manual gate')).toBeTruthy();
+    await userEvent.click(screen.getByRole('button', {name: 'Inspect assistant'}));
+    expect(screen.queryByLabelText('Use voice phrases')).toBeNull();
+    await userEvent.click(screen.getByRole('button', {name: 'Settings'}));
+    expect((screen.getByLabelText('Wake phrase') as HTMLInputElement).disabled).toBe(true);
+    expect((screen.getByLabelText('Standby phrase') as HTMLInputElement).disabled).toBe(true);
+    expect(screen.getByRole('button', {name: 'Save input names'})).toBeTruthy();
+  });
+
   it('saves phrases while stopped without claiming recognition is active', async () => {
     const c = installController();
     const original = c.postMessage.getMockImplementation()!;

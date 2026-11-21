@@ -1,5 +1,6 @@
 .DS_Store
 __pycache__/
+build/
 *.pyc
 frontend/node_modules/
 frontend/dist/

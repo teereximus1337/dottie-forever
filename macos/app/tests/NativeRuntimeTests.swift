@@ -262,6 +262,18 @@ import Darwin
 
         let resources = temp.appendingPathComponent("resources"), bin = resources.appendingPathComponent("bin")
         try FileManager.default.createDirectory(at: bin, withIntermediateDirectories: true)
+        let manualMarker = resources.appendingPathComponent("ManualVoiceGate")
+        let manualRuntime = NativeRuntime(directory: temp.appendingPathComponent("manual-runtime"), resources: resources)
+        let defaultGraph = ProductProfile.sanitizedGraph(from: [:])
+        try require(manualRuntime.graphForBuild(defaultGraph)["voice_detection"] as? Bool == true,
+                    "The full build preserves the normal detector default")
+        try Data().write(to: manualMarker)
+        _ = try manualRuntime.saveGraph(defaultGraph)
+        try require(manualRuntime.graph(from: manualRuntime.settings())["voice_detection"] as? Bool == false,
+                    "A manual build refuses to persist a graph with voice detection enabled")
+        try require(manualRuntime.graphForBuild(defaultGraph)["voice_detection"] as? Bool == false,
+                    "A manual build presents the gate without its missing detector")
+        try FileManager.default.removeItem(at: manualMarker)
         let host = URL(fileURLWithPath: FileManager.default.currentDirectoryPath).appendingPathComponent("macos/host/build/audio_router_host")
         try FileManager.default.createSymbolicLink(at: bin.appendingPathComponent("audio_router_host"), withDestinationURL: host)
         let runtime = NativeRuntime(directory: temp.appendingPathComponent("runtime"), resources: resources)
