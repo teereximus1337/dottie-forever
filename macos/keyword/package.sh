@@ -100,7 +100,20 @@ verify "$notices/LICENSE-onnxruntime-MIT.txt" \
 /usr/bin/unzip -p "$onnx_zip" "$onnx/ThirdPartyNotices.txt" > "$notices/ONNXRuntime-ThirdPartyNotices.txt"
 verify "$notices/ONNXRuntime-ThirdPartyNotices.txt" \
   0e07b95f3a8d6230037707c5c4a2b554d12c4cb67369669ac255635528ffcee2
-cp DEPENDENCIES.md "$notices/DEPENDENCIES.md"
+# The compact upstream Sherpa archive omits notices for libraries compiled
+# into its C API. Preserve the notices from the corresponding source versions.
+printf '%s\n' 'Fetching notices for libraries embedded in Sherpa ONNX.'
+while IFS="$(printf '\t')" read -r filename sha256 url; do
+  fetch "$url" "$notices/$filename" "$sha256"
+done < SHERPA-DEPENDENCY-NOTICES.tsv
+
+fetch 'https://raw.githubusercontent.com/pkufool/simple-sentencepiece/v0.7/ssentencepiece/csrc/darts.h' \
+  "$scratch/darts.h" a0ff15abf69e2651dedef5acacf474b7b8d20ace8cd5dd79dd201e99ccfee91d
+/usr/bin/awk '/^\/\*/ { notice=1; next } notice && /^\*\// { exit } notice { print }' \
+  "$scratch/darts.h" > "$notices/darts-clone-BSD-2-Clause.txt"
+verify "$notices/darts-clone-BSD-2-Clause.txt" 30704ed1913ec07b4090a1eaeafd4aa37af4efe83eebbc3b5a85cedb238e0666
+
+cp DEPENDENCIES.md SHERPA-DEPENDENCY-NOTICES.tsv "$notices/"
 
 /usr/bin/xcrun clang++ -std=c++17 -O2 -Wall -Wextra -Werror -pedantic \
   -mmacosx-version-min=14.4 -I"$scratch" worker.cpp -L"$package/lib" \

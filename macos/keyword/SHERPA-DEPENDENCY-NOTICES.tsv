@@ -1,0 +1,17 @@
+kaldi-native-fbank-LICENSE.txt	cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30	https://raw.githubusercontent.com/csukuangfj/kaldi-native-fbank/v1.22.4/LICENSE
+utf8proc-LICENSE.md	3b510150d34f248a221bb88e1d811238d6c6c18b51231822c42974c39bb07256	https://raw.githubusercontent.com/JuliaStrings/utf8proc/v2.12.0/LICENSE.md
+kaldi-decoder-LICENSE.txt	cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30	https://raw.githubusercontent.com/k2-fsa/kaldi-decoder/v0.3.0/LICENSE
+kaldifst-LICENSE.txt	a682d6efd1ee5dee08a8e405c233c2c198ea70ae0718129daa83ab58cfe31c5d	https://raw.githubusercontent.com/k2-fsa/kaldifst/v1.8.0/LICENSE
+openfst-COPYING.txt	4300529197035fd3452350718a0b8cee984e9412c9932d7f35fcde849fc97a4b	https://raw.githubusercontent.com/csukuangfj/openfst/v1.8.5-2026-07-09/COPYING
+openfst-AUTHORS.txt	43f2391d54a1b711ead93f27e1cbca4d38bf66de9aff05b4e00d957e3acac09a	https://raw.githubusercontent.com/csukuangfj/openfst/v1.8.5-2026-07-09/AUTHORS
+simple-sentencepiece-LICENSE.txt	c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4	https://raw.githubusercontent.com/pkufool/simple-sentencepiece/v0.7/LICENSE
+nlohmann-json-LICENSE.MIT.txt	46a65cffd1ea955132d95a8dd921640714a8d6b537d2e4e482d31145ae95b603	https://raw.githubusercontent.com/nlohmann/json/v3.12.0/LICENSE.MIT
+kissfft-COPYING.txt	a2840585f8411be8e6826a31ef15ae65c950bd74a2437a73b013398a934ad0c6	https://raw.githubusercontent.com/mborgerding/kissfft/febd4caeed32e33ad8b2e0bb5ea77542c40f18ec/COPYING
+kissfft-BSD-3-Clause.txt	4d6bcab46f27d6d0c878e8305d4bdcfe040d52bf6656b9771f04c9fb9902c0ed	https://raw.githubusercontent.com/mborgerding/kissfft/febd4caeed32e33ad8b2e0bb5ea77542c40f18ec/LICENSES/BSD-3-Clause
+hclust-cpp-LICENSE.txt	e361d842da1d290351860ad6dcce2673a1e42e4f873a3ae1ff4eb92c6adaa882	https://raw.githubusercontent.com/csukuangfj/hclust-cpp/2026-02-25/LICENSE
+eigen-LICENSE.txt	1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5	https://gitlab.com/libeigen/eigen/-/raw/5.0.1/LICENSE
+eigen-COPYING.README.txt	db640ff2bd90c6abd6a4d3fbb351e0ee4d555417cf840492054d1cbb2ea85644	https://gitlab.com/libeigen/eigen/-/raw/5.0.1/COPYING.README
+eigen-COPYING.MPL2.txt	66a3107d5ad6a058aab753eaac2047ccb2ed0e39465dd0fe5844da3e300d5172	https://gitlab.com/libeigen/eigen/-/raw/5.0.1/COPYING.MPL2
+eigen-COPYING.BSD.txt	51928dce36213c5333ba3172e847d735d4c6e9b7ff2722a326c49067155b82eb	https://gitlab.com/libeigen/eigen/-/raw/5.0.1/COPYING.BSD
+eigen-COPYING.APACHE.txt	03379001a7b12a2ec997a25554247d985270b353c10d5bafee9ac8d6519820b7	https://gitlab.com/libeigen/eigen/-/raw/5.0.1/COPYING.APACHE
+eigen-COPYING.MINPACK.txt	c87b7f8ee88f6195e91743820c00354833583aef091b72e2d4a49c8e28e798a0	https://gitlab.com/libeigen/eigen/-/raw/5.0.1/COPYING.MINPACK
