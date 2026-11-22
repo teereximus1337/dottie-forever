@@ -26,13 +26,13 @@ Use a Dot with command access to the Mac you’ll play on. Read the [requirement
 
 ### Install with one command
 
-Check the [requirements](#requirements), note your current microphone and output, and quit ChatGPT and Discord after ending active calls. Review the [driver script at the pinned revision](https://github.com/teereximus1337/dottie-forever/blob/6d378baf2106db22c06d6c4cb163c3152811775b/macos/setup/driver.sh) before running this in Terminal.
+Check the [requirements](#requirements), note your current microphone and output, and quit ChatGPT and Discord after ending active calls. Review the [driver script at the pinned revision](https://github.com/teereximus1337/dottie-forever/blob/c4e3227c5d26b5256bb6ca4f2cc4639a95440628/macos/setup/driver.sh) before running this in Terminal.
 
 ```sh
-( test ! -e "$HOME/dottie-forever" && test ! -L "$HOME/dottie-forever" && /usr/bin/git clone --branch main --single-branch https://github.com/teereximus1337/dottie-forever.git "$HOME/dottie-forever" && cd "$HOME/dottie-forever" && /usr/bin/git checkout --detach 6d378baf2106db22c06d6c4cb163c3152811775b && /bin/bash macos/setup/preflight.sh && /bin/bash macos/setup/build.sh --full && /usr/bin/sudo /bin/bash macos/setup/driver.sh install "$PWD/build/Dottie Forever.app" )
+( test ! -e "$HOME/dottie-forever" && test ! -L "$HOME/dottie-forever" && /usr/bin/git clone --branch main --single-branch https://github.com/teereximus1337/dottie-forever.git "$HOME/dottie-forever" && cd "$HOME/dottie-forever" && /usr/bin/git checkout --detach c4e3227c5d26b5256bb6ca4f2cc4639a95440628 && /bin/bash macos/setup/preflight.sh && /bin/bash macos/setup/build.sh --full && /usr/bin/sudo /bin/bash macos/setup/driver.sh install "$PWD/build/Dottie Forever.app" )
 ```
 
-This uses the reviewed setup at `6d378ba`. It builds `~/dottie-forever/build/Dottie Forever.app` and installs the virtual driver and broker with administrator approval. After it succeeds, restart your Mac and open the app with `open "$HOME/dottie-forever/build/Dottie Forever.app"`. Follow the macOS permission instructions in step 4 below. Keep the checkout for [uninstalling](#uninstall-and-restore-audio).
+This uses the reviewed setup at `c4e3227`. It builds `~/dottie-forever/build/Dottie Forever.app` and installs the virtual driver and broker with administrator approval. After it succeeds, restart your Mac and open the app with `open "$HOME/dottie-forever/build/Dottie Forever.app"`. Follow the macOS permission instructions in step 4 below. Keep the checkout for [uninstalling](#uninstall-and-restore-audio).
 
 ### Build the app and install its virtual inputs
 
