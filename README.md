@@ -24,6 +24,16 @@ Use a Dot with command access to the Mac you’ll play on. Read the [requirement
 
 **Launch candidate.** Clean installation and live voice validation are pending. Use a clean test Mac for these steps.
 
+### Install with one command
+
+Check the [requirements](#requirements), note your current microphone and output, and quit ChatGPT and Discord after ending active calls. Review the [driver script at the pinned revision](https://github.com/teereximus1337/dottie-forever/blob/6d378baf2106db22c06d6c4cb163c3152811775b/macos/setup/driver.sh) before running this in Terminal.
+
+```sh
+( test ! -e "$HOME/dottie-forever" && test ! -L "$HOME/dottie-forever" && /usr/bin/git clone --branch main --single-branch https://github.com/teereximus1337/dottie-forever.git "$HOME/dottie-forever" && cd "$HOME/dottie-forever" && /usr/bin/git checkout --detach 6d378baf2106db22c06d6c4cb163c3152811775b && /bin/bash macos/setup/preflight.sh && /bin/bash macos/setup/build.sh --full && /usr/bin/sudo /bin/bash macos/setup/driver.sh install "$PWD/build/Dottie Forever.app" )
+```
+
+This uses the reviewed setup at `6d378ba`. It builds `~/dottie-forever/build/Dottie Forever.app` and installs the virtual driver and broker with administrator approval. After it succeeds, restart your Mac and follow step 4 below to open the app and handle the macOS audio permissions. Keep the checkout for [uninstalling](#uninstall-and-restore-audio).
+
 ### Build the app and install its virtual inputs
 
 1. Note the microphone and output you use in macOS, ChatGPT and Discord so you can restore them. Check the [requirements](#requirements) before continuing.
