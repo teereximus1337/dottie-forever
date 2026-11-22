@@ -10,7 +10,7 @@ A wake phrase opens Dot’s input when you have a question. A standby phrase clo
 
 ## Demo
 
-[![Watch the Dottie Forever demo](docs/dottie-demo-placeholder.svg)](https://x.com/teereximus1337/status/1993199877725884844)
+![Dottie Forever demo coming to X](docs/dottie-demo-placeholder.svg)
 
 <!-- When the video is posted, change the line above to [![Watch the Dottie Forever demo](docs/dottie-demo-placeholder.svg)](FINAL_X_POST_URL). -->
 
@@ -22,7 +22,7 @@ Use a Dot with command access to the Mac you’ll play on. Read the [requirement
 
 ## Set up manually
 
-**Launch candidate.** Clean installation and live voice validation are pending. Use a clean test Mac for these steps.
+**Available from source.** The Apple Silicon build has been verified. Use a clean Mac for your first installation. The full setup and uninstall flow and live voice routing still need end-to-end verification.
 
 ### Install with one command
 
