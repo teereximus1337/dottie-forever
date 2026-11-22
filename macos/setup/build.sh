@@ -100,6 +100,7 @@ resources="$candidate/Contents/Resources"
 /bin/cp macos/app/Info.plist "$candidate/Contents/Info.plist"
 /usr/bin/ditto frontend/dist "$resources/web"
 /usr/bin/python3 "$repo/macos/setup/frontend_notices.py" collect frontend "$resources/notices/frontend.txt"
+/bin/cp "$repo/LICENSE" "$resources/notices/Dottie-Forever-MIT.txt"
 /bin/cp macos/host/build/audio_router_host \
   macos/broker/build/{audio_router_broker,launchdaemon.plist} "$resources/bin/"
 /usr/bin/ditto macos/driver/build/AudioRouter.driver "$resources/AudioRouter.driver"

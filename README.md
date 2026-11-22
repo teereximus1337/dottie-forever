@@ -32,7 +32,7 @@ Check the [requirements](#requirements), note your current microphone and output
 ( test ! -e "$HOME/dottie-forever" && test ! -L "$HOME/dottie-forever" && /usr/bin/git clone --branch main --single-branch https://github.com/teereximus1337/dottie-forever.git "$HOME/dottie-forever" && cd "$HOME/dottie-forever" && /usr/bin/git checkout --detach 6d378baf2106db22c06d6c4cb163c3152811775b && /bin/bash macos/setup/preflight.sh && /bin/bash macos/setup/build.sh --full && /usr/bin/sudo /bin/bash macos/setup/driver.sh install "$PWD/build/Dottie Forever.app" )
 ```
 
-This uses the reviewed setup at `6d378ba`. It builds `~/dottie-forever/build/Dottie Forever.app` and installs the virtual driver and broker with administrator approval. After it succeeds, restart your Mac and follow step 4 below to open the app and handle the macOS audio permissions. Keep the checkout for [uninstalling](#uninstall-and-restore-audio).
+This uses the reviewed setup at `6d378ba`. It builds `~/dottie-forever/build/Dottie Forever.app` and installs the virtual driver and broker with administrator approval. After it succeeds, restart your Mac and open the app with `open "$HOME/dottie-forever/build/Dottie Forever.app"`. Follow the macOS permission instructions in step 4 below. Keep the checkout for [uninstalling](#uninstall-and-restore-audio).
 
 ### Build the app and install its virtual inputs
 
@@ -54,7 +54,7 @@ This uses the reviewed setup at `6d378ba`. It builds `~/dottie-forever/build/Dot
    ```
 
    The driver supplies virtual microphones to ChatGPT and Discord. The local audio broker feeds the mix into those inputs. Restart your Mac after the install succeeds.
-4. Open the built app with `open "build/Dottie Forever.app"`. When prompted while starting routing, allow Dottie Forever to use your microphone and capture system audio. If macOS offers a system-audio-only choice, use it. Quit and reopen the app if macOS asks. Review the permissions under **System Settings → Privacy & Security**. [Microphone](https://support.apple.com/en-tj/guide/mac-help/mchla1b1e1fe/mac) · [System audio recording](https://support.apple.com/guide/mac-help/control-access-screen-system-audio-recording-mchld6aa7d23/mac)
+4. After the restart, return to the checkout in Terminal and open the app with `open "build/Dottie Forever.app"`. When prompted while starting routing, allow Dottie Forever to use your microphone and capture system audio. If macOS offers a system-audio-only choice, use it. Quit and reopen the app if macOS asks. Review the permissions under **System Settings → Privacy & Security**. [Microphone](https://support.apple.com/en-tj/guide/mac-help/mchla1b1e1fe/mac) · [System audio recording](https://support.apple.com/guide/mac-help/control-access-screen-system-audio-recording-mchld6aa7d23/mac)
 
 ### Ask solo
 
@@ -112,10 +112,12 @@ Polestar publishes guides and quest data. Open the conversation you use for voic
 
 To use the pinned quest database, set it up on your Dot’s VM and check the result in the same voice session. Try asking, “Who gives A Threat Within and who takes it? Tell me the Polestar release and record IDs.” [Dot VM setup](docs/POLESTAR.md#set-up-a-testers-dot-vm) · [Voice test and coverage](docs/POLESTAR.md#verify-in-the-same-voice-session)
 
-Thanks to [Samir from Dots](https://x.com/_samirism), [Fitz from Polestar](https://x.com/0xFitz), and the [Polestar contributors](https://github.com/fitzforge/polestar). Dottie Forever is an independent community project.
+Thanks to [Samir from Dots](https://x.com/_samirism), [Fitz from Polestar](https://x.com/0xFitz), and the [Polestar contributors](https://github.com/fitzforge/polestar). Dottie Forever is an independent project.
 
-## Source availability
+## License
 
-You may download, build, and run Dottie Forever for your personal use. All other rights in the project's original materials are reserved, subject to the [GitHub Terms of Service](https://docs.github.com/en/site-policy/github-terms/github-terms-of-service#5-license-grant-to-other-users). Third-party components retain their own licenses and notices.
+Download, build, fork, and adapt Dottie Forever independently. The [MIT License](LICENSE) covers the project's original source code, tests, build scripts, and written documentation. The [wordmark](docs/dottie-wordmark.svg), [demo placeholder](docs/dottie-demo-placeholder.svg), and [share card](docs/dottie-share-card.png) are project branding outside the MIT grant.
+
+Third-party components and notices retain their own terms. The build downloads the [wake runtime and model](macos/keyword/DEPENDENCIES.md) and preserves notices alongside the app. The [Polestar database](docs/POLESTAR.md#coverage-and-attribution) is downloaded separately under its upstream terms.
 
 <!-- The wordmark and demo placeholder are original Dottie Forever text and geometry. The GitHub social preview at docs/dottie-share-card.png uses the same palette and wordmark treatment with rasterized Avenir Next lettering. It contains no third-party marks or artwork. -->
