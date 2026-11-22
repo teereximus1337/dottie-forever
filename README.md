@@ -8,9 +8,7 @@ Set your own phrases to wake ChatGPT Dot and put it back on standby. Ask from yo
 
 ## Demo
 
-![Dottie Forever demo coming to X](docs/dottie-demo-placeholder.svg)
-
-<!-- When the video is posted, change the line above to [![Watch the Dottie Forever demo](docs/dottie-demo-placeholder.svg)](FINAL_X_POST_URL). -->
+[![Watch the Dottie Forever demo on X](docs/dottie-demo-placeholder.svg)](https://x.com/teereximus/status/2124321977968329015?a=CH8_AX2MdRjw0HsAaZw&s=20)
 
 ## Set up with your Dot
 
@@ -114,8 +112,8 @@ Thanks to [Samir from Dots](https://x.com/_samirism), [Fitz from Polestar](https
 
 ## License
 
-Download, build, fork, and adapt Dottie Forever independently. The [MIT License](LICENSE) covers the project's original source code, tests, build scripts, and written documentation. The [logo](docs/dottie-forever-logo.png), [wordmark](docs/dottie-wordmark.svg), [demo placeholder](docs/dottie-demo-placeholder.svg), and [share card](docs/dottie-share-card.png) are project branding outside the MIT grant. The [app screenshot](docs/dottie-forever-routing.png) is also outside the MIT grant. Third-party marks in the screenshot belong to their respective owners.
+Download, build, fork, and adapt Dottie Forever independently. The [MIT License](LICENSE) covers the project's original source code, tests, build scripts, and written documentation. The [logo](docs/dottie-forever-logo.png), [wordmark](docs/dottie-wordmark.svg), [demo card](docs/dottie-demo-placeholder.svg), and [share card](docs/dottie-share-card.png) are project branding outside the MIT grant. The [app screenshot](docs/dottie-forever-routing.png) is also outside the MIT grant. Third-party marks in the screenshot belong to their respective owners.
 
 Third-party components and notices retain their own terms. The build downloads the [wake runtime and model](macos/keyword/DEPENDENCIES.md) and preserves notices alongside the app. The [Polestar database](docs/POLESTAR.md#coverage-and-attribution) is downloaded separately under its upstream terms.
 
-<!-- The wordmark and demo placeholder are original Dottie Forever text and geometry. The GitHub social preview at docs/dottie-share-card.png uses the same palette and wordmark treatment with rasterized Avenir Next lettering. It contains no third-party marks or artwork. -->
+<!-- The wordmark and demo card are original Dottie Forever text and geometry. The GitHub social preview at docs/dottie-share-card.png uses the same palette and wordmark treatment with rasterized Avenir Next lettering. It contains no third-party marks or artwork. -->
