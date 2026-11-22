@@ -10,7 +10,7 @@ A wake phrase opens Dot’s input when you have a question. A standby phrase clo
 
 ## Demo
 
-![Dottie Forever demo, coming soon on X](docs/dottie-demo-placeholder.svg)
+[![Watch the Dottie Forever demo](docs/dottie-demo-placeholder.svg)](https://x.com/teereximus1337/status/1993199877725884844)
 
 <!-- When the video is posted, change the line above to [![Watch the Dottie Forever demo](docs/dottie-demo-placeholder.svg)](FINAL_X_POST_URL). -->
 
