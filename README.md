@@ -1,12 +1,10 @@
-# Dottie Forever
+# <img src="docs/dottie-forever-logo.png" alt="Dottie Forever" width="220">
 
 **Ask WoW Forever questions by voice, solo or with your guild in Discord.**
 
-![Dottie Forever](docs/dottie-wordmark.svg)
+Set your own phrases to wake ChatGPT Dot and put it back on standby. Ask from your mic when you play solo. With Discord routing enabled, anyone in your voice channel can use the phrases and hear Dot’s replies. Guild chat carries on while Dot is on standby. Give Dot [Polestar](https://github.com/fitzforge/polestar) as its WoW Forever reference, so you can ask where a quest starts without switching out of the game.
 
-Who starts this quest? Where do we turn it in? Ask your ChatGPT Dot while you play and use Polestar as its WoW Forever reference. Dottie Forever routes the audio on your Mac, so you can keep your game in front of you and hear the answer in your headphones.
-
-A wake phrase opens Dot’s input when you have a question. A standby phrase closes it while you keep talking to your guild. With Discord connected, a guildmate can wake Dot and everyone in voice can hear its reply. In solo play, leave Discord out and ask from your own microphone.
+<img src="docs/dottie-forever-routing.png" alt="Dottie Forever routing canvas with microphone, ChatGPT, Discord, Polestar, and playback nodes. Routing is stopped." width="680">
 
 ## Demo
 
@@ -116,7 +114,7 @@ Thanks to [Samir from Dots](https://x.com/_samirism), [Fitz from Polestar](https
 
 ## License
 
-Download, build, fork, and adapt Dottie Forever independently. The [MIT License](LICENSE) covers the project's original source code, tests, build scripts, and written documentation. The [wordmark](docs/dottie-wordmark.svg), [demo placeholder](docs/dottie-demo-placeholder.svg), and [share card](docs/dottie-share-card.png) are project branding outside the MIT grant.
+Download, build, fork, and adapt Dottie Forever independently. The [MIT License](LICENSE) covers the project's original source code, tests, build scripts, and written documentation. The [logo](docs/dottie-forever-logo.png), [wordmark](docs/dottie-wordmark.svg), [demo placeholder](docs/dottie-demo-placeholder.svg), and [share card](docs/dottie-share-card.png) are project branding outside the MIT grant. The [app screenshot](docs/dottie-forever-routing.png) is also outside the MIT grant. Third-party marks in the screenshot belong to their respective owners.
 
 Third-party components and notices retain their own terms. The build downloads the [wake runtime and model](macos/keyword/DEPENDENCIES.md) and preserves notices alongside the app. The [Polestar database](docs/POLESTAR.md#coverage-and-attribution) is downloaded separately under its upstream terms.
 
